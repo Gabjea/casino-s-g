@@ -6,7 +6,7 @@
 #include <ctime>
 using namespace std;
 
-fstream f("galeti.out",fstream::in | fstream::out);
+fstream f("bani.out",fstream::in | fstream::out);
 
 int bani,miza=0;
 
@@ -22,7 +22,7 @@ int main(){
     srand(time(NULL));
     f>>bani;
     f.close();
-    f.open("galeti.out",fstream::out);
+    f.open("bani.out",fstream::out);
     menu();
 
     f << bani;
@@ -142,7 +142,26 @@ void ruleta(){
 
 void dice(){
     system("cls");
-    cout << "| 1.LOW[1-3] | 2. ALEGE UN NR. | 3.HIGH[4-5]";
+    int r,opt;
+    cout << "| 1.LOW[1-3] | 2. ALEGE UN NR. | 3.HIGH[4-5] | 4.INAPOI | 5.EXIT";
+    cout << "\n\n\nALEGE O OPTIUNE: ";cin>>r;
+    switch(r){
+        case 1: {opt=1;break;}
+        case 2: {opt=2;break;}
+        case 3: {opt=3;break;}
+        case 4:{
+            system("cls");
+            return menu();
+            break;
+        }
+        case 5:{
+            system("cls");
+            exit();
+            return;
+        }
+    }
+    system("cls");
+
 }
 
 int update(){
