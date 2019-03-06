@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1551862693 source:c:\9a angi\cautare_binara\c\main.cpp
+	<iostream>
+	<fstream>
+	<windows.h>
+	<stdio.h>
+	<cstdlib>
+	<ctime>
+
