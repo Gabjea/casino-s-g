@@ -6,24 +6,26 @@
 #include <ctime>
 using namespace std;
 
-ifstream f("galeti.in");
-ofstream g("galeti.out");
+fstream f("galeti.out",fstream::in | fstream::out);
 
-int bani;
+int bani,miza=0;
 
 void menu();
 void blackjack();
 void ruleta();
 int exit();
+void roll();
 int update();
 
 int main(){
     srand(time(NULL));
     f>>bani;
+    f.close();
+    f.open("galeti.out",fstream::out);
     menu();
 
-    g << bani;
-    g.close();
+    f << bani;
+    f.close();
 }
 
 
@@ -49,18 +51,19 @@ void blackjack(){
 
 }
 
-void roll(){
-    int nr,roll=0;
+ void roll(int rez){
+    srand(time(NULL));
+    int nr;
     nr= rand() % 25 + 1;
     if(nr <=14 && nr!=0)
-        roll=1;
+        rez=1;
     if(nr>14)
-        roll=3;
-    else roll=2;
+        rez=3;
+    if(nr==0) rez=2;
 }
 
 void ruleta(){
-    int k,opt,miza;
+    int k,opt,rez;
     system("cls");
     update();
     cout << "   SOLD: " << bani;
@@ -70,16 +73,23 @@ void ruleta(){
     cout << "4.INAPOI\n";
     cout << "5.EXIT\n\n\n";
     cout << "ALEGE O OPTIUNE:";cin>>k;
-    roll();
+    roll(rez);
+    system("cls");
     switch(k){
         case 1:{
-            opt=1;break;
+            opt=1;
+            cout << "Ai ales rosu.";
+            break;
         }
         case 2:{
-            opt=2;break;
+            opt=2;
+            cout << "Ai ales verde.";
+            break;
         }
         case 3:{
-            opt=3;break;
+            opt=3;
+            cout << "Ai ales negru.";
+            break;
         }
         default: {
             system("cls");
@@ -87,11 +97,22 @@ void ruleta(){
             break;
         }
     }
-
-    //if(opt == roll)
+    cout << "\n\nALEGE SUMA PE CARE O PARIEZI: ";cin>>miza;
+    if(opt == rez){
+        bani+=miza;
+        cout << "\nFelicitari ai castigat!!!";
+        cout << "\n\nSOLD: "<< bani;
+    }else{
+        bani-=miza;
+        cout << "Din pacate ai pierdut, mai incearca!";
+        cout << "\n\nSOLD: "<< bani;
+    }
+    cout << rez;
+    system("pause");
 }
 
 int update(){
+    bani+=miza;
     return bani;
 }
 

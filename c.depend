@@ -7,3 +7,11 @@
 	<cstdlib>
 	<ctime>
 
+1551870197 source:c:\users\elev\documents\github\casino-s-g\main.cpp
+	<iostream>
+	<fstream>
+	<windows.h>
+	<stdio.h>
+	<cstdlib>
+	<ctime>
+
