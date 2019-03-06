@@ -142,6 +142,7 @@ void ruleta(){
 
 void dice(){
     system("cls");
+    cout << "| 1.LOW[1-3] | 2. ALEGE UN NR. | 3.HIGH[4-5]";
 }
 
 int update(){

@@ -15,3 +15,11 @@
 	<cstdlib>
 	<ctime>
 
+1551878715 source:c:\users\wire impulse\documents\github\casino-s-g\main.cpp
+	<iostream>
+	<fstream>
+	<windows.h>
+	<stdio.h>
+	<cstdlib>
+	<ctime>
+
