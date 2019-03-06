@@ -14,7 +14,7 @@ void menu();
 void blackjack();
 void ruleta();
 int exit();
-void roll();
+int roll();
 int update();
 
 int main(){
@@ -51,16 +51,6 @@ void blackjack(){
 
 }
 
- void roll(int rez){
-    srand(time(NULL));
-    int nr;
-    nr= rand() % 25 + 1;
-    if(nr <=14 && nr!=0)
-        rez=1;
-    if(nr>14)
-        rez=3;
-    if(nr==0) rez=2;
-}
 
 void ruleta(){
     int k,opt,rez;
@@ -73,7 +63,6 @@ void ruleta(){
     cout << "4.INAPOI\n";
     cout << "5.EXIT\n\n\n";
     cout << "ALEGE O OPTIUNE:";cin>>k;
-    roll(rez);
     system("cls");
     switch(k){
         case 1:{
@@ -98,6 +87,13 @@ void ruleta(){
         }
     }
     cout << "\n\nALEGE SUMA PE CARE O PARIEZI: ";cin>>miza;
+    int nr;
+    nr= rand() % 25 + 1;
+    if(nr <=14 && nr!=0)
+        rez=1;
+    if(nr>14)
+        rez=3;
+    if(nr==0) rez=2;
     if(opt == rez){
         bani+=miza;
         cout << "\nFelicitari ai castigat!!!";
