@@ -34,6 +34,7 @@ void menu(){
     cout << "1.Blackjack\n";
     cout << "2.Ruleta\n";
     cout << "3.Exit\n";
+    cout << "\n\nSOLD: " << bani;
     cout << "\n\nALEGE O OPTIUNE: ";cin>>r;
     switch(r){
         case 1: {blackjack();break;}
@@ -80,6 +81,17 @@ void ruleta(){
             cout << "Ai ales negru.";
             break;
         }
+        case 4:{
+            system("cls");
+            return menu();
+            break;
+        }
+        case 5:{
+            system("cls");
+            exit();
+            return;
+            break;
+        }
         default: {
             system("cls");
             return ruleta();
@@ -87,24 +99,41 @@ void ruleta(){
         }
     }
     cout << "\n\nALEGE SUMA PE CARE O PARIEZI: ";cin>>miza;
-    int nr;
-    nr= rand() % 25 + 1;
-    if(nr <=14 && nr!=0)
-        rez=1;
-    if(nr>14)
-        rez=3;
-    if(nr==0) rez=2;
-    if(opt == rez){
-        bani+=miza;
-        cout << "\nFelicitari ai castigat!!!";
-        cout << "\n\nSOLD: "<< bani;
-    }else{
-        bani-=miza;
-        cout << "Din pacate ai pierdut, mai incearca!";
-        cout << "\n\nSOLD: "<< bani;
+    if(miza>bani)
+        cout << "Nu ai suficienti bani";
+    else{
+        int nr;
+        nr= rand() % 25 + 1;
+        if(nr <=14 && nr!=0)
+            rez=1;
+        if(nr>14)
+            rez=3;
+        if(nr==0) rez=2;
+        if(opt == rez){
+            bani+=miza;
+            cout << "\nFelicitari ai castigat!!!";
+            cout << "\n\nSOLD: "<< bani;
+        }else{
+            bani-=miza;
+            cout << "Din pacate ai pierdut, mai incearca!";
+            cout << "\n\nSOLD: "<< bani;
+        }
     }
-    cout << rez;
-    system("pause");
+    cout << "\n\n1.Inapoi\n";
+    cout << "2.Exit\n\n\n";
+    cout << "ALEGE O OPTIUNE: ";cin>>k;
+    switch(k){
+        case 1:{
+            system("cls");
+            return menu();
+            break;
+        }
+        case 2:{
+            system("cls");
+            exit();
+            return;
+        }
+    }
 }
 
 int update(){
