@@ -13,6 +13,7 @@ int bani,miza=0;
 void menu();
 void blackjack();
 void ruleta();
+void dice();
 int exit();
 int roll();
 int update();
@@ -33,13 +34,15 @@ void menu(){
     int r;
     cout << "1.Blackjack\n";
     cout << "2.Ruleta\n";
-    cout << "3.Exit\n";
+    cout << "3.Dice\n";
+    cout << "4.Exit\n";
     cout << "\n\nSOLD: " << bani;
     cout << "\n\nALEGE O OPTIUNE: ";cin>>r;
     switch(r){
         case 1: {blackjack();break;}
         case 2: {ruleta();break;}
-        case 3: {exit();break;}
+        case 3: {dice();break;}
+        case 4: {exit();break;}
         default: {
             system("cls");
             return menu();
@@ -56,7 +59,6 @@ void blackjack(){
 void ruleta(){
     int k,opt,rez;
     system("cls");
-    update();
     cout << "   SOLD: " << bani;
     cout << "\n\n1.ROSU\n";
     cout << "2.VERDE\n";
@@ -110,7 +112,9 @@ void ruleta(){
             rez=3;
         if(nr==0) rez=2;
         if(opt == rez){
-            bani+=miza;
+            if(opt==2)
+                bani+=miza*14;
+            else bani+=miza;
             cout << "\nFelicitari ai castigat!!!";
             cout << "\n\nSOLD: "<< bani;
         }else{
@@ -134,6 +138,10 @@ void ruleta(){
             return;
         }
     }
+}
+
+void dice(){
+    system("cls");
 }
 
 int update(){
