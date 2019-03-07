@@ -388,7 +388,6 @@ SetConsoleTextAttribute(hStdOut, FOREGROUND_RED | BACKGROUND_BLUE | BACKGROUND_G
 
     }
  SetConsoleTextAttribute(hStdOut, FOREGROUND_RED | BACKGROUND_BLUE | BACKGROUND_GREEN | BACKGROUND_RED);
-    short col=8;
     while (true) {
         cout<<endl;
             for (int j=1;j<=98;j++)
