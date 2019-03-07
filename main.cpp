@@ -334,7 +334,7 @@ void dice(){
             return menu();
             break;
         }
-        case 2:{
+        case 2:{ //
             system("cls");
             exit();
             return;
