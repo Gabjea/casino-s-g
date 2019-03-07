@@ -26,7 +26,7 @@ int main(){
     f.open("bani.out",fstream::out);
     f << bani;
     f.close();
-    welcome();
+    //welcome();
     menu();
     f.open("bani.out",fstream::out);
     f << bani;
@@ -58,7 +58,8 @@ void menu(){
 void blackjack(){ // este un bug in care nu poti alege nimic check it my boy xD
     system("cls");
     int carti,player=0,dealer=0,fdown=0,r;
-    cout << "\n\nALEGE SUMA PE CARE O PARIEZI: ";cin>>miza;
+    cout << "\n\nSOLD: "<< bani;
+    cout << "\nALEGE SUMA PE CARE O PARIEZI: ";cin>>miza;
     if(miza>bani)
         cout << "Nu ai suficienti bani";
     else{
@@ -141,7 +142,7 @@ void blackjack(){ // este un bug in care nu poti alege nimic check it my boy xD
             }
         }
         system("cls");
-        Sleep(500);
+        Sleep(300);
         cout << "Dealer-ul are: " << dealer;
         Sleep(500);
         cout << "\nTu ai: " << player;
@@ -166,7 +167,22 @@ void blackjack(){ // este un bug in care nu poti alege nimic check it my boy xD
             }else cout << "\n\nEste egalitate.Nimeni nu a castigat!!";
 
         }
-
+    }
+    update();
+    cout << "\n\n1.Inapoi\n";
+    cout << "2.Exit\n\n\n";
+    cout << "ALEGE O OPTIUNE: ";cin>>r;
+    switch(r){
+        case 1:{
+            system("cls");
+            return menu();
+            break;
+        }
+        case 2:{
+            system("cls");
+            exit();
+            return;
+        }
     }
 }
 
@@ -215,7 +231,8 @@ void ruleta(){
             break;
         }
     }
-    cout << "\n\nALEGE SUMA PE CARE O PARIEZI: ";cin>>miza;
+    cout << "\n\nSOLD: "<< bani;
+    cout << "\nALEGE SUMA PE CARE O PARIEZI: ";cin>>miza;
     if(miza>bani)
         cout << "Nu ai suficienti bani";
     else{
@@ -226,6 +243,11 @@ void ruleta(){
         if(nr>14)
             rez=3;
         if(nr==0) rez=2;
+        switch(rez){
+                case 1: {cout << "\nA cazut rosu!";break;}
+                case 2: {cout << "\nA cazut verde!";break;}
+                case 3: {cout << "\nA cazut negru!";break;}
+            }
         if(opt == rez){
             if(opt==2)
                 bani+=miza*14;
@@ -234,7 +256,7 @@ void ruleta(){
             cout << "\n\nSOLD: "<< bani;
         }else{
             bani-=miza;
-            cout << "Din pacate ai pierdut, mai incearca!";
+            cout << "\nDin pacate ai pierdut, mai incearca!";
             cout << "\n\nSOLD: "<< bani;
         }
     }
@@ -278,7 +300,8 @@ void dice(){
             break;
         }
     }
-    cout << "\n\nALEGE SUMA PE CARE O PARIEZI: ";cin>>miza;
+    cout << "\n\nSOLD: "<< bani;
+    cout << "\nALEGE SUMA PE CARE O PARIEZI: ";cin>>miza;
     if(miza>bani)
         cout << "Nu ai suficienti bani";
     else{
