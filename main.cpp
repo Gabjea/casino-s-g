@@ -67,10 +67,14 @@ void blackjack(){ // este un bug in care nu poti alege nimic check it my boy xD
         for(int i =0;i<2;i++){
             srand(time(NULL));
             carti=rand() % 10 +1;
+            if(carti==1)
+                carti=11;
             dealer+=carti;
             if(i==1)
                 fdown=carti;
             carti= rand() % 10 +1;
+            if(carti==1)
+                carti=11;
             player+=carti;
             system("cls");
             Sleep(500);
@@ -78,6 +82,53 @@ void blackjack(){ // este un bug in care nu poti alege nimic check it my boy xD
             Sleep(500);
             cout << "\nTu ai: " << player;
             Sleep(1500);
+        }
+        if(dealer==22){
+            dealer=12;
+            system("cls");
+            Sleep(500);
+            cout << "Dealer-ul are: " << dealer-1;
+            Sleep(500);
+            cout << "\nTu ai: " << player;
+            Sleep(700);
+            cout << "\n\nDealer-ul are Blackjack!!";
+            cout << "\n\nDin pacate ai pierdut, mai incearca!";
+            cout << "\n\nSOLD: "<< bani;
+        }
+        if(player==22){
+            player=12;
+            system("cls");
+            Sleep(500);
+            cout << "Dealer-ul are: " << dealer;
+            Sleep(500);
+            cout << "\nTu ai: " << player;
+            Sleep(700);
+            cout << "\n\nDealer-ul are Blackjack!!";
+            cout << "\n\nDin pacate ai pierdut, mai incearca!";
+            cout << "\n\nSOLD: "<< bani;
+        }
+        if(dealer==21){
+            system("cls");
+            Sleep(500);
+            cout << "Dealer-ul are: " << dealer;
+            Sleep(500);
+            cout << "\nTu ai: " << player;
+            Sleep(700);
+            cout << "\n\nDealer-ul are Blackjack!!";
+            cout << "\n\nDin pacate ai pierdut, mai incearca!";
+            cout << "\n\nSOLD: "<< bani;
+        }
+        if(player==21){
+            bani-=miza;
+            system("cls");
+            Sleep(500);
+            cout << "Dealer-ul are: " << dealer;
+            Sleep(500);
+            cout << "\nTu ai: " << player;
+            Sleep(700);
+            cout << "\n\nAi Blackjack!!!";
+            cout << "\n\nFelicitari ai castigat!!!";
+            cout << "\n\nSOLD: "<< bani;
         }
         while(dealer <=17 && player<21){
             system("cls");
@@ -164,7 +215,9 @@ void blackjack(){ // este un bug in care nu poti alege nimic check it my boy xD
             else if(player < dealer){
                     cout << "\n\nDin pacate ai pierdut, mai incearca!";
                     cout << "\n\nSOLD: "<< bani;
-            }else cout << "\n\nEste egalitate.Nimeni nu a castigat!!";
+            }else {cout << "\n\nEste egalitate.Nimeni nu a castigat!!";
+                bani+=miza;
+            }
 
         }
     }
