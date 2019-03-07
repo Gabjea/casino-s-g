@@ -4,12 +4,13 @@
 #include <stdio.h>
 #include <cstdlib>
 #include <ctime>
+#include <conio.h>
 using namespace std;
 
 fstream f("bani.out",fstream::in | fstream::out);
 
 int bani,miza=0;
-
+void welcome();
 void menu();
 void blackjack();
 void ruleta();
@@ -25,6 +26,7 @@ int main(){
     f.open("bani.out",fstream::out);
     f << bani;
     f.close();
+    welcome();
     menu();
     f.open("bani.out",fstream::out);
     f << bani;
@@ -361,4 +363,45 @@ int exit(){
     cout << ".";
     Sleep(400);
     return 0;
+}
+void welcome ()
+{
+    short aux;
+    HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+SetConsoleTextAttribute(hStdOut, FOREGROUND_RED | BACKGROUND_BLUE | BACKGROUND_GREEN | BACKGROUND_RED);
+
+    for (short i=0;i<=100;i++)
+    {
+        cout<<' '<<i<<'%'<<endl;
+        SetConsoleTextAttribute(hStdOut,25);
+        for (short j=0;j<=i;j++) {
+            cout<<"  ";
+         if (j==100) {
+                SetConsoleTextAttribute(hStdOut,17);
+         }
+        }
+        Sleep(25);
+        if (i!=100) {
+           SetConsoleTextAttribute(hStdOut, FOREGROUND_RED | BACKGROUND_BLUE | BACKGROUND_GREEN | BACKGROUND_RED);
+        system("cls");
+        }
+
+    }
+ SetConsoleTextAttribute(hStdOut, FOREGROUND_RED | BACKGROUND_BLUE | BACKGROUND_GREEN | BACKGROUND_RED);
+    short col=8;
+    while (true) {
+        cout<<endl;
+            for (int j=1;j<=98;j++)
+            cout<<" ";
+    cout<<" Apasa orice pt a continua!\n";
+    char ch;
+
+        if (kbhit) {
+            ch = getch();
+            if (int(ch))
+                break;
+          }
+        }
+SetConsoleTextAttribute(hStdOut,15);
+system("cls");
 }
