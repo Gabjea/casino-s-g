@@ -348,7 +348,7 @@ void update(){
     f << bani;
     f.close();
 }
-
+///
 int exit(){
     system("cls");
     Sleep(400);
