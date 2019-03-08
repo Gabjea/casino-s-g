@@ -33,3 +33,12 @@
 	<ctime>
 	<conio.h>
 
+1552028490 source:c:\users\wireimpulse\documents\github\casino-s-g\main.cpp
+	<iostream>
+	<fstream>
+	<windows.h>
+	<stdio.h>
+	<cstdlib>
+	<ctime>
+	<conio.h>
+

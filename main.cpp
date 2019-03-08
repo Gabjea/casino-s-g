@@ -6,10 +6,13 @@
 #include <ctime>
 #include <conio.h>
 using namespace std;
-
+  HANDLE col = GetStdHandle(STD_OUTPUT_HANDLE);///
 fstream f("bani.out",fstream::in | fstream::out);
+fstream nrt_hand("nrtheme.txt",fstream::in | fstream::out);
 
 int bani,miza=0;
+void update_theme();
+void sch_theme();
 void welcome();
 void menu();
 void blackjack();
@@ -18,15 +21,19 @@ void dice();
 int exit();
 int roll();
 void update();
+    short theme;
 
 int main(){
+    nrt_hand>>theme;
     srand(time(NULL));
     f>>bani;
+    nrt_hand.close();
     f.close();
     f.open("bani.out",fstream::out);
     f << bani;
     f.close();
-    //welcome();
+    welcome();
+    update_theme();///
     menu();
     f.open("bani.out",fstream::out);
     f << bani;
@@ -35,11 +42,13 @@ int main(){
 
 
 void menu(){
+
     int r;
     cout << "1.Blackjack\n";
     cout << "2.Ruleta\n";
     cout << "3.Dice\n";
     cout << "4.Exit\n";
+    cout<<"5.Schimba tema\n";
     cout << "\n\nSOLD: " << bani;
     cout << "\n\nALEGE O OPTIUNE: ";cin>>r;
     switch(r){
@@ -47,14 +56,14 @@ void menu(){
         case 2: {ruleta();break;}
         case 3: {dice();break;}
         case 4: {exit();break;}
+        case 5:{sch_theme();break;}///
         default: {
-            system("cls");
+	            system("cls");
             return menu();
             break;
         }
     }
 }
-
 void blackjack(){ // este un bug in care nu poti alege nimic check it my boy xD
     system("cls");
     int carti,player=0,dealer=0,fdown=0,r;
@@ -479,4 +488,35 @@ SetConsoleTextAttribute(hStdOut, FOREGROUND_RED | BACKGROUND_BLUE | BACKGROUND_G
         }
 SetConsoleTextAttribute(hStdOut,15);
 system("cls");
+}
+///****************************************************
+void sch_theme()
+{
+
+    for (short i=1;i<=256;i++)
+    {
+        SetConsoleTextAttribute(col,i);
+        cout<<"Tema numarul "<<i<<endl;
+    }
+    SetConsoleTextAttribute(col,15);
+    cout<<"Alege una din temele de mai sus:";
+    cin>>theme;
+    nrt_hand.open("nrtheme.txt",fstream::out);
+        nrt_hand<<theme;
+        cout<<"Aplicatia se va inchide,pls deschide-o din nou apoi pt a avea tema noua!";
+        nrt_hand.close();
+        Sleep(3998);
+        exit();//*/
+}
+
+void update_theme()
+{
+
+    if (!theme)
+    theme=15;
+    else {
+    SetConsoleTextAttribute(col,theme);
+    }
+    system("cls");
+    return;
 }
