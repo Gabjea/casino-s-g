@@ -9,7 +9,7 @@ using namespace std;
 
 fstream f("bani.out",fstream::in | fstream::out);
 
-int bani,miza=0;
+int bani,miza=0;m
 void welcome();
 void menu();
 void blackjack();
